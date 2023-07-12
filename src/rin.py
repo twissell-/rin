@@ -1,11 +1,21 @@
+import logging
+
 import plexaniscrobbler
 import plextoggltracker
-from flask import Flask, request
+from flask import Flask
+from flask import logging as flask_logging
+from flask import request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 import config
 
 rin = Flask("Rin")
+flask_logging.default_handler.setFormatter(
+    logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+)
 rin.debug = config.get("debug")
 
 
