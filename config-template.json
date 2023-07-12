@@ -1,0 +1,29 @@
+{
+  "plexaniscrobbler": {
+    "url_prefix": "",
+    "anilist_username": "",
+    "anilist_access_token": "",
+    "plex_username": ""
+  },
+  "plextoggltracker": {
+    "url_prefix": "",
+    "toggl_api_token": "",
+    "plex_username": "",
+    "mapping": [
+      {
+        "libraries": [
+          "TV Shows",
+          "Movies"
+        ],
+        "project": "Leisure | Anime"
+      },
+      {
+        "libraries": [
+          "Other TV Shows",
+          "Other Movies"
+        ],
+        "project": "Leisure | TV"
+      }
+    ]
+  }
+}
