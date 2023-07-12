@@ -1,6 +1,7 @@
 import json
+import os
 
-_CONFIG_PATH = "./config.json"
+_CONFIG_PATH = os.getenv("RIN_CONFIG_FILE") or "./config.json"
 
 
 def get(identifier):
