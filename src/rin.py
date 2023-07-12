@@ -1,11 +1,20 @@
 import plexaniscrobbler
 import plextoggltracker
-from flask import Flask
+from flask import Flask, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 import config
 
 rin = Flask("Rin")
+rin.debug = config.get("debug")
+
+
+@rin.before_request
+def request_logger():
+    rin.logger.debug("Data: {}".format(request.data))
+    rin.logger.debug("Args: {}".format(dict(request.args)))
+    rin.logger.debug("Form: {}".format(dict(request.form)))
+
 
 plexaniscrobbler.configure(
     anilist_username=config.get("plexaniscrobbler.anilist_username"),

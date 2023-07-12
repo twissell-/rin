@@ -1,4 +1,5 @@
 {
+  "debug": false,
   "plexaniscrobbler": {
     "url_prefix": "",
     "anilist_username": "",
