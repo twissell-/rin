@@ -1,5 +1,6 @@
 {
   "debug": false,
+  "whitelist_ips": [],
   "plexaniscrobbler": {
     "url_prefix": "",
     "anilist_username": "",

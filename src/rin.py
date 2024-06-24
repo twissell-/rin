@@ -2,7 +2,7 @@ import logging
 
 import plexaniscrobbler
 import plextoggltracker
-from flask import Flask
+from flask import Flask, abort
 from flask import logging as flask_logging
 from flask import request
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -16,11 +16,17 @@ flask_logging.default_handler.setFormatter(
         datefmt="%Y-%m-%d %H:%M:%S",
     )
 )
+rin.logger.setLevel(logging.INFO)
 rin.debug = config.get("debug")
 
 
 @rin.before_request
 def request_logger():
+    whitelist = config.get("whitelist_ips")
+    if whitelist and request.remote_addr not in whitelist:
+        rin.logger.info(f"Aborted request from {request.remote_addr}")
+        abort(403)  # Forbidden
+
     rin.logger.debug("Data: {}".format(request.data))
     rin.logger.debug("Args: {}".format(dict(request.args)))
     rin.logger.debug("Form: {}".format(dict(request.form)))
