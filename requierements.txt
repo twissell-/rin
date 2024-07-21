@@ -1,3 +1,4 @@
 flask
+gunicorn
 git+https://github.com/twissell-/PlexAniScrobbler@master
 git+https://github.com/twissell-/PlexTogglTracker@master
