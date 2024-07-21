@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 set -o pipefail
 
 # A minimal script to cron and ensure the flask server is always running.
