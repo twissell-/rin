@@ -1,6 +1,7 @@
 import logging
 
 import plexaniscrobbler
+import plexclockifytracker
 import plextoggltracker
 from flask import Flask, abort
 from flask import logging as flask_logging
@@ -50,6 +51,16 @@ plextoggltracker.configure(
 
 rin.register_blueprint(
     plextoggltracker.webhook, url_prefix=config.get("plextoggltracker.url_prefix")
+)
+
+plexclockifytracker.configure(
+    clockify_api_key=config.get("plexclockifytracker.clockify_api_key"),
+    plex_username=config.get("plexclockifytracker.plex_username"),
+    mapping=config.get("plexclockifytracker.mapping"),
+)
+
+rin.register_blueprint(
+    plexclockifytracker.webhook, url_prefix=config.get("plexclockifytracker.url_prefix")
 )
 
 rin.wsgi_app = ProxyFix(rin.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
